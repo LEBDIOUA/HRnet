@@ -1,0 +1,56 @@
+.main.employeeList {
+  padding: 0;
+}
+.gridContainer {
+  background-color: transparent;
+  width: 100%;
+  padding: 30px 50px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  .custom-select {
+    width: 100px;
+    .select-items {
+      height: auto;
+    }
+
+    .select-selected,
+    .select-items {
+      border: 2px solid grey;
+    }
+  }
+
+  .gridMain-table {
+    th {
+      background-color: #586e10;
+      font-weight: 700;
+      color: white;
+    }
+    th,
+    td {
+      border: 1px solid #ddd;
+      padding: 12px;
+    }
+  }
+
+  .gridControls-btns button {
+    background-color: #586e10;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: #d6fb53;
+      color: #2c3a01;
+    }
+
+    &:disabled {
+      background-color: #ddd;
+      cursor: not-allowed;
+    }
+  }
+}
+.react-datepicker__day--disabled {
+  color: #ccc;
+  cursor: not-allowed;
+}

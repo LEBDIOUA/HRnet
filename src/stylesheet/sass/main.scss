@@ -1,0 +1,11 @@
+@import "./abstracts/fonctions.scss";
+@import "./abstracts/mixins.scss";
+@import "./base/base.scss";
+@import "./base/reset.scss";
+
+@import "./components/datePickerStyle.scss";
+@import "./components/employeesTable.scss";
+
+@import "./layouts/header.scss";
+@import "./layouts/main.scss";
+@import "./layouts/footer.scss";

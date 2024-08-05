@@ -1,0 +1,11 @@
+.header {
+    @include box($display: flex, $direction: row, $gap: 20%, $color: #357a38);
+
+    &-logo-image {
+        @include box($width: 130px, $height: 130px);
+    }
+
+    &-details {
+        @include box($display: flex, $direction: column, $justifycontent: center, $gap: 10px);
+    }
+}

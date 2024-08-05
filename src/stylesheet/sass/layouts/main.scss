@@ -1,0 +1,75 @@
+.main {
+  @include box($display: flex, $direction: column, $gap: 20px, $padding: 30px 100px 30px 100px, $bgcolor: #faf8ef);
+  align-items: center;
+  flex-grow: 1;
+
+  h2 {
+    align-self: left;
+  }
+
+  &-form {
+    @include box($width: fit-content, $display: flex, $direction: column, $gap: 30px, $padding: 0px 100px);
+    position: relative;
+
+    .select-selected {
+      border: 1px solid grey;
+      &.select-arrow-active:after {
+        border-color: transparent transparent grey transparent;
+      }
+      &:after {
+        border-color: grey transparent transparent transparent;
+      }
+    }
+
+    .select-items {
+      border: 1px solid grey;
+    }
+
+    &-item {
+      @include box($height: 40px, $width: 300px, $fontsize: 16);
+
+      &[type="text"]:not(.react-datepicker-wrapper input) {
+        padding-left: 10px;
+      }
+
+      &-err {
+        border: 2px solid #d77e7e !important;
+        box-shadow: 1px -1px 4px #da6b6b;
+      }
+    }
+
+    &-perso {
+      @include box($display: grid, $templatecolumns: 1fr 1fr, $templaterows: 1fr 1fr, $rowgap: 20px, $columngap: 20px, $padding: 0px 10px);
+    }
+
+    &-sg {
+      @include box($display: flex, $direction: row, $alignitems: center);
+    }
+    &-department {
+      @include box($padding: 0px 10px);
+    }
+
+    label {
+      min-width: 90px;
+    }
+
+    &-address {
+      @include box($display: grid, $templatecolumns: 1fr 1fr, $templaterows: 1fr 1fr, $rowgap: 20px, $columngap: 20px, $padding: 20px 10px);
+
+      &-title {
+        font-weight: bold;
+      }
+    }
+  }
+
+  .error {
+    color: red;
+    top: 55px;
+    right: -120px;
+    position: absolute;
+    width: 220px;
+    &.error-hide{
+      display: none;
+    }
+  }
+}

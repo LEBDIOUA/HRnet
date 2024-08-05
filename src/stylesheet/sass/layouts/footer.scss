@@ -1,0 +1,7 @@
+.footer {
+    @include box($width: 100%, $display: flex, $justifycontent: center, $alignitems: center, $padding: 30px 0px 30px 0px);
+    * {
+        @include box($color: #586e10);
+        font-weight: 700;
+    }
+}

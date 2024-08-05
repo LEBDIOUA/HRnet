@@ -1,0 +1,179 @@
+@mixin box($width: null, $minwidth: null, $maxwidth: null, $height: null, $minheight: null, $maxheight: null, $display: null, $direction: null, $flexgrow: null, $gap: null, $justifycontent: null, $aligncontent: null, $alignitems: null, $templatecolumns: null, $templaterows: null, $rowgap: null, $columngap: null, $position: null, $top: null, $right: null, $left: null, $placecontent: null, $bgcolor: null, $padding: null, $paddingtop: null, $paddingright: null, $paddingbottom: null, $paddingleft: null, $margin: null, $margintop: null, $marginright: null, $marginbottom: null, $marginleft: null, $radius: null, $radiustop: null, $radiusright: null, $radiusbottom: null, $radiusleft: null, $shadow: null, $shadowtop: null, $shadowright: null, $shadowbottom: null, $shadowleft: null, $shadowcolor: black, $fontweight: null, $fontsize: null, $color: null, $textalign: null) {
+  background-color: $bgcolor;
+  flex-grow: $flexgrow;
+
+  @if ($placecontent) {
+    place-content: $placecontent;
+  }
+
+  @include boxsize($width, $minwidth, $maxwidth, $height, $minheight, $maxheight);
+  @include boxposition($position, $top, $right, $left);
+
+  @if ($display) {
+    display: $display;
+
+    @if ($display == "flex") {
+      @include flexbox($direction, $gap, $justifycontent, $aligncontent, $alignitems);
+    } @else {
+      @include gridbox($templatecolumns, $templaterows, $rowgap, $columngap);
+    }
+  }
+
+  @include police($fontweight, $fontsize, $color, $textalign, $width);
+  @include padding($padding, $paddingtop, $paddingright, $paddingbottom, $paddingleft);
+  @include margin($margin, $margintop, $marginright, $marginbottom, $marginleft);
+  @include radius($radius, $radiustop, $radiusright, $radiusbottom, $radiusleft);
+  @include shadow($shadow, $shadowtop, $shadowright, $shadowbottom, $shadowleft, $shadowcolor);
+}
+
+@mixin boxsize($width: null, $minwidth: null, $maxwidth: null, $height: null, $minheight: null, $maxheight: null) {
+  @if ($width) {
+    width: $width;
+  }
+
+  @if ($minwidth) {
+    min-width: $minwidth;
+  }
+
+  @if ($maxwidth) {
+    max-width: $maxwidth;
+  }
+
+  @if ($height) {
+    height: $height;
+  }
+
+  @if ($minheight) {
+    min-height: $minheight;
+  }
+
+  @if ($maxheight) {
+    max-height: $maxheight;
+  }
+}
+
+@mixin boxposition($position: null, $top: null, $right: null, $left: null) {
+  @if (position) {
+    position: $position;
+  }
+
+  @if ($top) {
+    top: $top;
+  }
+
+  @if ($right) {
+    right: $right;
+  }
+
+  @if ($left) {
+    left: $left;
+  }
+}
+
+@mixin flexbox($direction: null, $gap: null, $justifycontent: null, $aligncontent: null, $alignitems: null) {
+  @if ($direction) {
+    flex-direction: $direction;
+  }
+
+  @if ($gap) {
+    gap: $gap;
+  }
+
+  @if ($justifycontent) {
+    justify-content: $justifycontent;
+  }
+
+  @if ($aligncontent) {
+    align-content: $aligncontent;
+  }
+
+  @if ($alignitems) {
+    align-items: $alignitems;
+  }
+}
+
+@mixin gridbox($templatecolumns: null, $templaterows: null, $rowgap: null, $columngap: null) {
+  @if ($templatecolumns) {
+    grid-template-columns: $templatecolumns;
+  }
+
+  @if ($templaterows) {
+    grid-template-rows: $templaterows;
+  }
+
+  @if ($rowgap) {
+    row-gap: $rowgap;
+  }
+
+  @if ($columngap) {
+    column-gap: $columngap;
+  }
+}
+
+@mixin childgrid($columnstart: null, $columnend: null, $rowstart: null, $rowend: null) {
+  @if ($columnstart) {
+    grid-column-start: $columnstart;
+  }
+
+  @if ($columnend) {
+    grid-column-end: $columnend;
+  }
+
+  @if ($rowstart) {
+    grid-row-start: $rowstart;
+  }
+
+  @if ($rowend) {
+    grid-row-end: $rowend;
+  }
+}
+
+@mixin padding($padding: null, $paddingtop: 0, $paddingright: 0, $paddingbottom: 0, $paddingleft: 0) {
+  @if ($padding) {
+    padding: $padding;
+  } @else {
+    padding: $paddingtop $paddingright $paddingbottom $paddingleft;
+  }
+}
+
+@mixin margin($margin: null, $margintop: 0, $marginright: 0, $marginbottom: 0, $marginleft: 0) {
+  @if ($margin) {
+    margin: $margin;
+  } @else {
+    margin: $margintop $marginright $marginbottom $marginleft;
+  }
+}
+
+@mixin radius($radius: null, $radiustop: 0, $radiusright: 0, $radiusbottom: 0, $radiusleft: 0) {
+  @if ($radius) {
+    border-radius: $radius;
+  } @else {
+    border-radius: $radiustop $radiusright $radiusbottom $radiusleft;
+  }
+}
+
+@mixin shadow($shadow, $shadowtop: 0, $shadowright: 0, $shadowbottom: 0, $shadowleft: 0, $shadowcolor) {
+  @if ($shadow) {
+    box-shadow: $shadow;
+  } @else if($shadowtop or $shadowright or $shadowbottom or $shadowleft) {
+    box-shadow: $shadowtop $shadowright $shadowbottom $shadowleft $shadowcolor;
+  }
+}
+
+@mixin police($fontweight: null, $fontsize: null, $color: null, $textalign: null, $width: 1440) {
+  @if ($fontweight) {
+    font-weight: $fontweight;
+  }
+
+  @if ($fontsize) {
+    font-size: fontSizeValues($fontsize, $width);
+  }
+
+  @if ($color) {
+    color: $color;
+  }
+
+  @if ($textalign) {
+    text-align: $textalign;
+  }
+}

@@ -1,0 +1,16 @@
+@function fontSizeValues($pxValue: 14, $width: 1440) {
+    $actualWidth : $width;
+    @if($width ==null or $width =='100%') {
+        $actualWidth : 1440;
+    }
+
+    @else if (type-of($width) == 'string' and str-index($width, 'px')) {
+        $actualWidth: str-slice($width, 1, str-index($width, 'px') - 1);
+    }
+
+    $pxValue: $pxValue * 1px;
+    $minPxValue: $pxValue - 2;
+    $vwValue: calc($pxValue / $actualWidth) * 100;
+
+    @return unquote('clamp(#{$minPxValue}, #{$vwValue}vw, #{$pxValue})');
+}

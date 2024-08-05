@@ -1,0 +1,261 @@
+html {
+  width: 100%;
+  max-width: 1440px;
+  min-height: 100vh;
+}
+
+body {
+  margin-bottom: 50px;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  color: #3b411f;
+}
+#root * {
+  font-family: "Inter", sans-serif;
+  box-sizing: border-box;
+}
+
+a {
+  cursor: pointer;
+  color: #3b411f;
+}
+
+.btn {
+  background-color: #586e10;
+  width: 200px;
+  height: 40px;
+  color: white;
+  border-radius: 20px;
+  border: 2px solid #4f6403;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.btn:hover {
+  background-color: #d6fb53;
+  color: #2c3a01;
+}
+
+html {
+  margin: 0px auto;
+  padding: 0px;
+}
+html * {
+  margin: 0;
+}
+
+#root {
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  object-fit: cover;
+}
+
+.react-datepicker__input-container .react-datepicker__calendar-icon {
+  top: 50%;
+  left: 5%;
+  transform: translate(-50%, -50%);
+  padding: 0;
+  fill: #445604;
+}
+
+.react-datepicker__header:not(.react-datepicker__header--has-time-select) {
+  background-color: #445604;
+}
+.react-datepicker__header:not(.react-datepicker__header--has-time-select) * {
+  color: white;
+}
+
+.react-datepicker__month * {
+  color: #3b411f;
+}
+
+.react-datepicker__day--selected[aria-selected=true] {
+  background-color: #b4cd57;
+}
+
+.react-datepicker__navigation-icon::before, .react-datepicker__navigation:hover *::before {
+  border-color: white;
+}
+
+.react-datepicker__navigation:hover *::before {
+  border-color: #eaff00;
+}
+
+.main.employeeList {
+  padding: 0;
+}
+
+.gridContainer {
+  background-color: transparent;
+  width: 100%;
+  padding: 30px 50px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.gridContainer .custom-select {
+  width: 100px;
+}
+.gridContainer .custom-select .select-items {
+  height: auto;
+}
+.gridContainer .custom-select .select-selected,
+.gridContainer .custom-select .select-items {
+  border: 2px solid grey;
+}
+.gridContainer .gridMain-table th {
+  background-color: #586e10;
+  font-weight: 700;
+  color: white;
+}
+.gridContainer .gridMain-table th,
+.gridContainer .gridMain-table td {
+  border: 1px solid #ddd;
+  padding: 12px;
+}
+.gridContainer .gridControls-btns button {
+  background-color: #586e10;
+  transition: background-color 0.3s;
+}
+.gridContainer .gridControls-btns button:hover {
+  background-color: #d6fb53;
+  color: #2c3a01;
+}
+.gridContainer .gridControls-btns button:disabled {
+  background-color: #ddd;
+  cursor: not-allowed;
+}
+
+.react-datepicker__day--disabled {
+  color: #ccc;
+  cursor: not-allowed;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  gap: 20%;
+  color: #357a38;
+}
+.header-logo-image {
+  width: 130px;
+  height: 130px;
+}
+.header-details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+}
+
+.main {
+  background-color: #faf8ef;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 30px 100px 30px 100px;
+  align-items: center;
+  flex-grow: 1;
+}
+.main h2 {
+  align-self: left;
+}
+.main-form {
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 0px 100px;
+  position: relative;
+}
+.main-form .select-selected {
+  border: 1px solid grey;
+}
+.main-form .select-selected.select-arrow-active:after {
+  border-color: transparent transparent grey transparent;
+}
+.main-form .select-selected:after {
+  border-color: grey transparent transparent transparent;
+}
+.main-form .select-items {
+  border: 1px solid grey;
+}
+.main-form-item {
+  width: 300px;
+  height: 40px;
+  font-size: clamp(14px, 5.3333333333vw, 16px);
+}
+.main-form-item[type=text]:not(.react-datepicker-wrapper input) {
+  padding-left: 10px;
+}
+.main-form-item-err {
+  border: 2px solid #d77e7e !important;
+  box-shadow: 1px -1px 4px #da6b6b;
+}
+.main-form-perso {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  row-gap: 20px;
+  column-gap: 20px;
+  padding: 0px 10px;
+}
+.main-form-sg {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.main-form-department {
+  padding: 0px 10px;
+}
+.main-form label {
+  min-width: 90px;
+}
+.main-form-address {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  row-gap: 20px;
+  column-gap: 20px;
+  padding: 20px 10px;
+}
+.main-form-address-title {
+  font-weight: bold;
+}
+.main .error {
+  color: red;
+  top: 55px;
+  right: -120px;
+  position: absolute;
+  width: 220px;
+}
+.main .error.error-hide {
+  display: none;
+}
+
+.footer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 0px 30px 0px;
+}
+.footer * {
+  color: #586e10;
+  font-weight: 700;
+}
+
+/*# sourceMappingURL=style.css.map */
