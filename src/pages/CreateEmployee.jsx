@@ -9,7 +9,8 @@ import "@lebdioua/react-select-plugin/dist/style.css";
 import "react-datepicker/dist/react-datepicker.css";
 import { formatDate } from "../app/format";
 import DatePickerInput from "../components/DatePickerInput";
-import { saveEmployee as saveEmployeeAction } from "../redux/employeesSlice";
+import { saveEmployee as saveEmployeeAction} from "../redux/employeesSlice";
+import Employee from "../data/employee";
 
 function Accueil() {
   const mainRef = useRef(null);
@@ -34,6 +35,7 @@ function Accueil() {
   const [birthDate, setBirthDate] = useState(null);
 
   const dispatch = useDispatch();
+  // const id = useSelector(selectNewId);
 
   const handleInputChange = (ref) => {
     if (ref.current) {
@@ -48,17 +50,8 @@ function Accueil() {
   const saveEmployee = () => {
     const isValid = handleCheckInputs();
     if (isValid) {
-      const employee = {
-        firstName: firstNameRef.current ? firstNameRef.current.value : null,
-        lastName: lastNameRef.current ? lastNameRef.current.value : null,
-        dateOfBirth: birthDate ? formatDate(birthDate) : null,
-        startDate: startDate ? formatDate(startDate) : null,
-        street: streetRef.current ? streetRef.current.value : null,
-        city: cityRef.current ? cityRef.current.value : null,
-        state: selectedState ? selectedState : null,
-        zipCode: zipCodeRef.current ? zipCodeRef.current.value : null,
-        department: selectedDepartment ? selectedDepartment : null,
-      };
+      // dispatch(generateIdAction());
+      const employee = new Employee(firstNameRef.current ? firstNameRef.current.value : null, lastNameRef.current ? lastNameRef.current.value : null, birthDate ? formatDate(birthDate) : null, startDate ? formatDate(startDate) : null, streetRef.current ? streetRef.current.value : null, cityRef.current ? cityRef.current.value : null, selectedState ? selectedState : null, zipCodeRef.current ? zipCodeRef.current.value : null, selectedDepartment ? selectedDepartment : null);
       dispatch(saveEmployeeAction(employee));
       setShowModal(true);
     } else {
@@ -93,14 +86,10 @@ function Accueil() {
     if (!selectedState || selectedState === "Select a state") {
       setErrorState(true);
       allValid = false;
-    } else {
-      setErrorState(false);
     }
     if (!selectedDepartment || selectedDepartment === "Select a department") {
       setErrorDepartment(true);
       allValid = false;
-    } else {
-      setErrorDepartment(false);
     }
     return allValid;
   };
@@ -126,8 +115,11 @@ function Accueil() {
   }, [reset]);
 
   useEffect(() => {
-    if (selectedState) setErrorState(false);
-    if (selectedDepartment) setErrorDepartment(false);
+    if (selectedState && selectedState !== "Select a state") {
+      setErrorState(false);
+      console.log();
+    }
+    if (selectedDepartment && selectedDepartment !== "Select a department") setErrorDepartment(false);
     if (birthDate) {
       setErrorBirthDate(false);
       errorDate.current.classList.add("error-hide");
@@ -155,11 +147,17 @@ function Accueil() {
     return age >= 18 ? true : false;
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter" && showModal) {
+      e.preventDefault();
+    }
+  };
+
   return (
     <>
       <main className="main" ref={mainRef}>
         <h2>Create Employee</h2>
-        <form action="#" id="create-employee" className="main-form">
+        <form action="#" id="create-employee" className="main-form" onKeyDown={handleKeyDown}>
           <div className="main-form-perso">
             <div className="main-form-sg">
               <label htmlFor="first-name"> First Name </label>
@@ -207,7 +205,7 @@ function Accueil() {
             <CustomSelect id="department" data={departments ?? null} defaultValue="Select a department" className="main-form-item" classNameErr="main-form-item-err" onSelect={setSelectedDepartment} isError={errorDepartment} reset={reset} tabIndex={9} />
           </div>
         </form>
-        <button className="btn" onClick={saveEmployee}>
+        <button className="btn" onClick={saveEmployee} disabled={showModal}>
           Save
         </button>
       </main>

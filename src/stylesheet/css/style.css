@@ -94,7 +94,7 @@ img {
 }
 
 .main.employeeList {
-  padding: 0;
+  padding: 0 0 30px 0;
 }
 
 .gridContainer {
@@ -246,12 +246,20 @@ img {
   display: none;
 }
 
+.btnSort.asc {
+  top: 16px;
+}
+
+.btnSort.desc {
+  top: 8px;
+}
+
 .footer {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 30px 0px 30px 0px;
+  padding: 0px 0px 30px 0px;
 }
 .footer * {
   color: #586e10;

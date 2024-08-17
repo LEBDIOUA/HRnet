@@ -68,8 +68,16 @@
     right: -120px;
     position: absolute;
     width: 220px;
-    &.error-hide{
+    &.error-hide {
       display: none;
     }
   }
+}
+
+.btnSort.asc {
+  top: 16px;
+}
+
+.btnSort.desc {
+  top: 8px;
 }
